@@ -77,8 +77,39 @@ font-size: 1rem;
   color: #6D6E71;
 }
 
+.search-input {
+  margin: 2% 0;
+  width: 50%;
+  height: 1.8rem;
+}
+.search-input::placeholder {
+font-size: 1rem;
+color: lightgrey;
+}
+
+.card-top {
+ display: flex;
+ justify-content: space-between;
+ margin-bottom: 1%;
+}
+
+.card-bottom {
+  display: flex;
+  margin: 3% 0;
+}
+.fa-arrow-circle-down, .quality-label{
+  margin-left: 2%;
+}
+
+.card-section { 
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
 .card-article {
-border-bottom: 1px solid #D1D3D4;
+  border-bottom: 1px solid #D1D3D4;
+  width: 50%;
 }
 
 .fas, .far {
