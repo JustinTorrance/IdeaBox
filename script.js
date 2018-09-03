@@ -53,12 +53,12 @@ function createCard(event) {
 
 function cardHTML(object) {
   cardSection.innerHTML += `
-  <article class="card-article">
+  <article data-index="${object.id}" class="card-article">
     <div class="card-top">
-      <h3 class="card-title">${titleInput.value}</h3>
+      <h3 class="card-title">${object.title}</h3>
       <i class="far fa-times-circle delete-btn"></i>
     </div>
-    <p class="card-body">${bodyInput.value}</p>
+    <p class="card-body">${object.body}</p>
     <div class="card-bottom">
       <i class="fas fa-arrow-circle-up"></i>
       <i class="fas fa-arrow-circle-down"></i>
