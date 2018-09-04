@@ -34,6 +34,7 @@ color: #6D6E71;
   width: 50%;
   margin-bottom: .8%;
   height: 1.8rem;
+  font-size: 1rem;
 }
 
 .title-input::placeholder{
@@ -59,6 +60,10 @@ font-size: 1rem;
 .save-btn:hover:enabled {
   background-color: #045E55;
   color: #fff;
+}
+
+.save-btn:disabled {
+  background-color: gray;
 }
 
 .card-title {

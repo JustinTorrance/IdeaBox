@@ -26,18 +26,13 @@ function displayCards(e) {
   });
 };
 
-function CardConstructor(title, body) {
-  this.id = Date.now();
-  this.title = title;
-  this.body = body;
-};
 
 function createCard(event) {
   event.preventDefault();
   var newCard = new CardConstructor(titleInput.value, bodyInput.value); 
   cardHTML(newCard);
   var cardArray = [];
-  if (JSON.parse(localStorage.getItem("storedCardArray"))) {
+  if (JSON.parse(localStorage.getItem("storedCardArray"))) { //Check if storedCardArray exists in localStorage
     cardArray = JSON.parse(localStorage.getItem("storedCardArray")); 
     cardArray.push(newCard);
     localStorage.setItem('storedCardArray', JSON.stringify(cardArray));
@@ -49,7 +44,13 @@ function createCard(event) {
   bodyInput.value = '';
   titleInput.focus();
   toggleSaveButton();
-}
+};
+
+function CardConstructor(title, body) {
+  this.id = Date.now();
+  this.title = title;
+  this.body = body;
+};
 
 function cardHTML(object) {
   cardSection.innerHTML += `
@@ -65,14 +66,20 @@ function cardHTML(object) {
       <p class="quality-label">quality: </p>
       <p class="selected-quality">swill</p>
     </div>
-  </article>`
-}
+  </article>` 
+};
 
 function deleteCard(event){
   if (event.target.classList.contains('delete-btn')) {
+    var cardId = event.target.parentNode.parentNode.getAttribute('data-index');
+    var cardArray = JSON.parse(localStorage.getItem('storedCardArray'));
+    var newArray = cardArray.filter(function(object) {
+      return object.id != cardId;
+    })
+    localStorage.setItem("storedCardArray", JSON.stringify(newArray));
     event.target.parentNode.parentNode.remove();
   }
-}
+};
 
 
 // localStorage.setItem('storedCardArray', JSON.stringify(cardArray))
