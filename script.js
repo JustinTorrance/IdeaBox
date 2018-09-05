@@ -3,11 +3,16 @@ var bodyInput = document.querySelector('.body-input');
 var saveBtn = document.querySelector('.save-btn');
 var searchInput = document.querySelector('.search-input');
 var cardSection = document.querySelector('.card-section');
+var upVoteBtn = document.querySelector('.upvote-btn');
+var downVoteBtn = document.querySelector('.downvote-btn');
 
 saveBtn.addEventListener('click', createCard);
 cardSection.addEventListener('click', deleteCard);
 titleInput.addEventListener('keyup', toggleSaveButton);
 bodyInput.addEventListener('keyup', toggleSaveButton);
+cardSection.addEventListener('click', upVote);
+cardSection.addEventListener('click', downVote);
+
 
 toggleSaveButton();
 displayCards();
@@ -61,8 +66,8 @@ function cardHTML(object) {
     </div>
     <p class="card-body">${object.body}</p>
     <div class="card-bottom">
-      <i class="fas fa-arrow-circle-up"></i>
-      <i class="fas fa-arrow-circle-down"></i>
+      <i class="fas fa-arrow-circle-up upvote-btn"></i>
+      <i class="fas fa-arrow-circle-down downvote-btn"></i>
       <p class="quality-label">quality: </p>
       <p class="selected-quality">swill</p>
     </div>
@@ -71,17 +76,31 @@ function cardHTML(object) {
 
 function deleteCard(event){
   if (event.target.classList.contains('delete-btn')) {
+    event.target.closest('.card-article').remove();
     var cardId = event.target.parentNode.parentNode.getAttribute('data-index');
     var cardArray = JSON.parse(localStorage.getItem('storedCardArray'));
     var newArray = cardArray.filter(function(object) {
       return object.id != cardId;
     })
     localStorage.setItem("storedCardArray", JSON.stringify(newArray));
-    event.target.parentNode.parentNode.remove();
   }
 };
 
+function upVote(event) {
+    if (event.target.classList.contains('upvote-btn') && event.target.parentNode.childNodes[7].innerText === 'swill');
+      {
+    }
+};
+  
+//if value swill, return plausible
+//if value plausible, return genius
 
-// localStorage.setItem('storedCardArray', JSON.stringify(cardArray))
 
+
+
+
+
+function downVote() {
+
+};
 
