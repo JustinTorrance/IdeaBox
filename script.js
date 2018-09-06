@@ -3,16 +3,11 @@ var bodyInput = document.querySelector('.body-input');
 var saveBtn = document.querySelector('.save-btn');
 var searchInput = document.querySelector('.search-input');
 var cardSection = document.querySelector('.card-section');
-var upVoteBtn = document.querySelector('.upvote-btn');
-var downVoteBtn = document.querySelector('.downvote-btn');
 
 saveBtn.addEventListener('click', createCard);
 cardSection.addEventListener('click', deleteCard);
 titleInput.addEventListener('keyup', toggleSaveButton);
 bodyInput.addEventListener('keyup', toggleSaveButton);
-cardSection.addEventListener('click', upVote);
-cardSection.addEventListener('click', downVote);
-
 
 toggleSaveButton();
 displayCards();
@@ -23,14 +18,13 @@ function toggleSaveButton(){
   } else {
     saveBtn.disabled = false;
   }
-}
+};
 
 function displayCards(e) {
   JSON.parse(localStorage.getItem("storedCardArray")).forEach(function(potato) {
     cardHTML(potato);
   });
 };
-
 
 function createCard(event) {
   event.preventDefault();
@@ -75,7 +69,6 @@ function cardHTML(object) {
   </article>` 
 };
 
-
 function deleteCard(event){
   if (event.target.classList.contains('delete-btn')) {
     event.target.closest('.card-article').remove();
@@ -88,23 +81,103 @@ function deleteCard(event){
   }
 };
 
-function upVote(event) {
-    if (event.target.classList.contains('upvote-btn') && event.target.parentNode.childNodes[7].innerText === 'swill'); { 
-      var cardArray = JSON.parse(localStorage.getItem('storedCardArray'));
-      event.target.parentNode.childNodes[7].quality = 'plausible';
-      localStorage.setItem("storedCardArray", JSON.stringify(cardArray));
-    }
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// cardSection.addEventListener('click', upVote);
+// cardSection.addEventListener('click', downVote);
+
+
+// function upVote(event) { 
+//     if (event.target.classList.contains('upvote-btn') && event.target.parentNode.childNodes[7].innerText === 'swill') { 
+//       event.target.parentNode.childNodes[7].innerText = 'plausible';
+//       var cardId = event.target.parentNode.parentNode.getAttribute('data-index');
+//       var cardArray = JSON.parse(localStorage.getItem('storedCardArray'));
+//       cardArray.forEach(function(card) {
+//         if (card.id == cardId) {
+//           card.quality = 'plausible';
+//         }
+//       localStorage.setItem("storedCardArray", JSON.stringify(cardArray));
+//       })  
+//     } else if (event.target.parentNode.childNodes[7].innerText === 'plausible') { 
+//       event.target.parentNode.childNodes[7].innerText = 'genius';
+//       var cardId = event.target.parentNode.parentNode.getAttribute('data-index')
+//       var cardArray = JSON.parse(localStorage.getItem('storedCardArray'));
+//       cardArray.forEach(function(card) {
+//         if (card.id == cardId) {
+//           card.quality = 'genius';
+//         }
+//       localStorage.setItem("storedCardArray", JSON.stringify(cardArray));
+//       })
+//     }
+//   };
+
   
-//if value swill, return plausible
-//if value plausible, return genius
 
 
 
 
 
+// function downVote(event) {
+//     if (event.target.classList.contains('downvote-btn') && event.target.parentNode.childNodes[7].innerText === 'genius') { 
+//       event.target.parentNode.childNodes[7].innerText = 'plausible';
+//       var cardId = event.target.parentNode.parentNode.getAttribute('data-index');
+//       var cardArray = JSON.parse(localStorage.getItem('storedCardArray'));
+//       cardArray.forEach(function(card) {
+//         if (card.id == cardId) {
+//           card.quality = 'plausible';
+//         }
+//       localStorage.setItem("storedCardArray", JSON.stringify(cardArray));
+//       })  
+//     } else if (event.target.parentNode.childNodes[7].innerText === 'plausible') { 
+//       event.target.parentNode.childNodes[7].innerText = 'swill';
+//       var cardId = event.target.parentNode.parentNode.getAttribute('data-index')
+//       var cardArray = JSON.parse(localStorage.getItem('storedCardArray'));
+//       cardArray.forEach(function(card) {
+//         if (card.id == cardId) {
+//           card.quality = 'swill';
+//         }
+//       localStorage.setItem("storedCardArray", JSON.stringify(cardArray));
+//       })
+//     }
 
-function downVote() {
-
-};
-
+// };
