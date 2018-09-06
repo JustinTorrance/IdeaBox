@@ -55,6 +55,7 @@ function CardConstructor(title, body) {
   this.id = Date.now();
   this.title = title;
   this.body = body;
+  this.quality = 'swill';
 };
 
 function cardHTML(object) {
@@ -69,10 +70,11 @@ function cardHTML(object) {
       <i class="fas fa-arrow-circle-up upvote-btn"></i>
       <i class="fas fa-arrow-circle-down downvote-btn"></i>
       <p class="quality-label">quality: </p>
-      <p class="selected-quality">swill</p>
+      <p class="selected-quality">${object.quality}</p>
     </div>
   </article>` 
 };
+
 
 function deleteCard(event){
   if (event.target.classList.contains('delete-btn')) {
@@ -87,8 +89,10 @@ function deleteCard(event){
 };
 
 function upVote(event) {
-    if (event.target.classList.contains('upvote-btn') && event.target.parentNode.childNodes[7].innerText === 'swill');
-      {
+    if (event.target.classList.contains('upvote-btn') && event.target.parentNode.childNodes[7].innerText === 'swill'); { 
+      var cardArray = JSON.parse(localStorage.getItem('storedCardArray'));
+      event.target.parentNode.childNodes[7].quality = 'plausible';
+      localStorage.setItem("storedCardArray", JSON.stringify(cardArray));
     }
 };
   
